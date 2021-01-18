@@ -1,0 +1,546 @@
+/*
+=============== 
+Variables
+===============
+*/
+
+/* Colors */	
+$lavender: #e4ddf7;
+$dirty-pink: #d4b8b8;
+$dark-red: #5c0303;
+$bright-red: #ff6366;
+$dark-grey: #545252;
+$white: #ffffff;
+$black: #000000;
+
+/* Misc */
+$transition: all 0.3s linear;
+$spacing: 0.1rem;
+$radius: 0.25rem;
+$light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+$dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+$max-width: 1170px;
+$fixed-width: 620px;
+
+/*
+=============== 
+Extend/Inheritance
+===============
+*/
+
+%centering {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/*
+=============== 
+Global Styles
+===============
+*/
+
+*,
+::after,
+::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family:'Petrona', serif;
+	background: $lavender;
+	color: $dark-grey;
+	line-height: 1.5;
+	font-size: 0.875rem;
+}
+
+ul {
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+	color: $dark-red;
+}
+
+button {
+	color: $white;
+	border: none;
+	background: $bright-red;
+	font-family: inherit;
+	line-height: inherit;
+	padding: 0.5rem 2rem;
+	border-radius: $radius;
+	box-shadow: $light-shadow;
+	text-transform: capitalize;
+	letter-spacing: $spacing;
+	transition: $transition;
+	cursor: pointer;
+}
+
+button:hover {
+	background: $dark-red;
+}
+
+h1, h2, h3, h4 {
+	letter-spacing: $spacing;
+	text-transform: capitalize;
+	line-height: 1.25;
+	margin-bottom: 0.75rem;
+}
+
+h1 {
+	font-size: 3rem;
+}
+
+h2 {
+	font-size: 2rem;
+}
+
+h3 {
+	font-size: 1rem;
+}
+
+h4 {
+	font-size: 0.875rem;
+}
+
+p {
+	margin-bottom: 1.25rem;
+}
+
+@media screen and (min-width: 800px) {
+	h1 {
+		font-size: 4rem;
+	}
+
+	h2 {
+		font-size: 2.5rem;
+	}
+
+	h3 {
+		font-size: 1.75rem;
+	}
+
+	h4 {
+		font-size: 1rem;
+	}
+	body {
+		font-size: 1rem;
+	}
+
+	h1, h2, h3, h4 {
+		line-height: 1;
+	}
+}
+
+.section {
+	width: 90vw;
+	margin: 0 auto;
+	max-width: $max-width;
+}
+
+@media screen and (min-width: 992px) {
+	.section {
+		width: 95vw;
+	}
+}
+
+/*
+=============== 
+Navbar
+===============
+*/
+
+nav {
+	background: $white;
+	box-shadow: $light-shadow;
+}
+
+.nav-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem;
+}
+
+.nav-toggle {
+	font-size: 1.5rem;
+	padding: 8px;
+	color: $dark-red;
+	background: transparent;
+	border-color: transparent;
+	transition: $transition;
+	cursor: pointer;
+}
+
+.nav-toggle:hover {
+	color: $dirty-pink;
+	transform: rotate(90deg);
+}
+
+.logo {
+	height: 50px;
+}
+
+.links a {
+	color: $dark-grey;
+	font-size: 1rem;
+	text-transform: capitalize;
+	letter-spacing: $spacing;
+	display: block;
+	padding: 0.5rem 1rem;
+	transition: $transition;
+}
+
+.links a:hover {
+	background: $bright-red;
+	padding-left: 1.5rem;
+}
+
+.social-icons {
+	display: none;
+}
+
+.links-container {
+	height: 0;
+	overflow: hidden;
+	transition: $transition;
+}
+
+.show-container {
+	height: 10rem;
+}
+
+@media screen and (min-width: 800px) {
+
+	.nav-center {
+		max-width: $max-width;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 1rem;
+	}
+
+	.nav-header {
+		padding: 0;
+	}
+
+	.nav-toggle {
+		display: none;
+	}
+
+	.links-container {
+		height: auto !important;
+	}
+
+	.links {
+		display: flex;
+	}
+	.links a {
+		padding: 0;
+		margin: 0 0.5rem;
+	}
+
+	.links a:hover {
+		padding: 0;
+		background: transparent;
+	}
+
+	.social-icons {
+		display: flex;
+	}
+
+	.social-icons a {
+		margin: 0 0.5rem;
+		color: $dark-grey;
+		transition: $transition;
+	}
+
+	.social-icons a:hover {
+		color: $dirty-pink;
+	}
+}
+
+/*
+=============== 
+Hero
+===============
+*/
+
+.hero {
+	@extend %centering;
+	flex-direction: column;
+	padding: 2rem;
+
+}
+
+.rec-interaction {
+	@extend %centering;
+	flex-direction: column;
+	padding: 0 2rem;
+}
+
+.hero-btns {
+	margin: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.book-results {
+	@extend %centering;
+}
+
+.categories {
+	background: $dirty-pink;
+	border: none;
+	border-radius: $radius;
+	padding: 1rem;
+	min-height: 300px;
+	max-width: 200px;
+	color: $white;
+}
+
+.book {
+	@extend %centering;
+	flex-direction: column;
+	background: $white;
+	border: none;
+	border-radius: $radius;
+	padding: 1rem;
+}
+
+.book img {
+	width: 50%;
+	border-radius: $radius;
+	padding: 1rem;
+}
+
+.book-details {
+	padding: 1rem;
+}
+
+.link-btn {
+	background: none;
+	border: none;
+	padding: 0;
+	box-shadow: none;
+	margin: 0;
+	color: $bright-red;
+}
+
+.link-btn:hover {
+	color: $dark-red;
+}
+
+.rec-buttons {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	max-width: 350px;
+}
+
+.rec-buttons button {
+	background: none;
+	border: 1px solid $dirty-pink;
+	color: $dark-grey;
+	transition: $transition;
+}
+
+.rec-buttons button:hover {
+	background: $dirty-pink;
+	border: 1px solid $dirty-pink;
+	color: $white;
+}
+
+.filter-btn {
+	display: block;
+	background: $white;
+	color: $dark-grey;
+	padding: 0.5rem;
+	font-size: 1rem;
+	line-height: 1rem;
+	margin-right: 1rem;
+}
+
+@media screen and (min-width: 600px) {
+	.book {
+		flex-direction: row;
+		align-items: flex-start;
+	}
+}
+
+
+@media screen and (min-width: 800px) {
+	.filter-btn {
+		display: none;
+	}
+
+	.book-results {
+		display: grid;
+		grid-template-columns: 20% 80%;
+		grid-column-gap: 2rem;
+		align-items: flex-start;
+	}
+
+	.book {
+		flex-direction: row;
+		margin-right: 2rem;
+	}
+
+}
+
+/*
+================= 
+Radio Filters
+=================
+*/
+
+.container {
+	display: block;
+	position: relative;
+	cursor: pointer;
+	padding-left: 1.25rem;
+	padding-bottom: none;
+	line-height: 1rem;
+}
+
+.container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 1rem;
+	width: 1rem;
+	background-color: $white;
+	border-radius: 50%;
+}
+
+.container:hover input ~ .checkmark {
+	background-color: $bright-red;
+	transition: $transition;
+}
+
+.container input:checked ~ .checkmark {
+	background-color: $white;
+}
+
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+	display: block;
+}
+
+.container .checkmark:after {
+	top: 0.3rem;
+	left: 0.3rem;
+	width: 0.4rem;
+	height: 0.4rem;
+	border-radius: 50%;
+	background: $dark-grey;
+}
+
+/*
+================= 
+Popup Categories
+=================
+*/
+.popup-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 10;
+	display: grid;
+	place-items: center;
+	transition: $transition;
+}
+.popup-categories {
+	width: 90vw;
+	height: 30vh;
+	max-width: $fixed-width;
+	position: relative;
+	color: $white;
+	background: $dirty-pink;
+	border-radius: $radius;
+	padding: 1rem;
+}
+
+.popup-title {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+/*
+================= 
+Eros Interaction
+=================
+*/
+
+.eros {
+	height: 60vh;
+	display: block;
+	margin: 0 auto;
+	position: relative;
+}
+
+/*
+================= 
+Lists
+=================
+*/
+
+.lists {
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 50% 50%;
+	justify-content: center;
+	align-content: center;
+	max-width: $max-width;
+	grid-gap: 1rem;
+
+}
+
+.list {
+	background: $white;
+	border-radius: $radius;
+	padding: 1rem;
+}
+
+/*
+================= 
+Shelves
+=================
+*/
+
+.shelves {
+	@extend %centering;
+	padding: 1rem;
+	margin: 0 auto;
+	max-width: $max-width;
+}
+
+.shelves-img {
+	width: 25%;
+}
+
+.shelves p {
+	padding: 1rem;
+	max-width: 50%;
+}
