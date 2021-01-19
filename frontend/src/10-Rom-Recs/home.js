@@ -13,7 +13,6 @@ const Home = () => {
 	const [mobile, setMobile] = useState(false);
 
 	function fetchAllBooks() {
-		console.log('fetchIt', api.fetchIt);
 		api.fetchIt('http://localhost:8000/users').then((bookList) => {
 			setAllBooks(bookList);
 			setFilteredBooks(bookList);

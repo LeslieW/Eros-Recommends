@@ -1,11 +1,13 @@
 import React from 'react';
-import {render, fireEvent, cleanup, wait} from '@testing-library/react';
+import {render, fireEvent, cleanup, wait } from '@testing-library/react';
 import Filters from './filters.js';
 import App from './app.js';
 import { api } from './api.js';
 import Home from './home.js';
 import Rec from './rec.js';
 import ReactDom from 'react-dom';
+
+afterEach(cleanup);
 
 const mockFetchIt = (api.fetchIt = jest.fn());
 
@@ -31,14 +33,17 @@ const TEST_BOOKS = [
 
 test('updates checked state upon a filter click', async () => {
 	// TODO: Mock call to backend to return 1 non-fantasy and 1 fantasy book
-	const asyncMock = mockFetchIt.mockResolvedValueOnce(TEST_BOOKS);
 	
+	const asyncMock = mockFetchIt.mockResolvedValueOnce(TEST_BOOKS);
+	 
 	const { container, getByText } = render(<Home/>);
-
-  await asyncMock();
+	
+  await wait(asyncMock());
 
 	const button = getByText('Tell me what to read');
+
 	// TODO: Assert that book shown in non-fantasy
+	
 	fireEvent.click(button);
 	const all = container.querySelector('input[value=All]');
 	const paranormal = container.querySelector('input[value=Paranormal]');
@@ -54,3 +59,10 @@ test('updates checked state upon a filter click', async () => {
 	expect(paranormal.checked).toBe(true);
 	expect(paranormalBook.innerHTML).toBe('The Invisible Life of Addie LaRue');
 })
+
+test('renders a correct snapshot', async () => {
+	const asyncMock = mockFetchIt.mockResolvedValueOnce(TEST_BOOKS);
+  const { asFragment } = render(<Home />)
+  await wait(asyncMock());
+  expect(asFragment(<home />)).toMatchSnapshot();
+});
