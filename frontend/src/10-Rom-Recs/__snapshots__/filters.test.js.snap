@@ -50,7 +50,7 @@ exports[`renders a correct snapshot 1`] = `
   <img
     alt="Eros"
     class="eros"
-    src="/images/eros_hero.svg"
+    src="/images/Eros_Hero.svg"
   />
 </DocumentFragment>
 `;
